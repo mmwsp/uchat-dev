@@ -1,15 +1,22 @@
-CC=gcc
-CFLAGS= -Iinc -Wall -Wextra -Werror -Wpedantic -std=c11 -pthread
-HEAD=inc/server.h
-OBJ=src/main.o
+CC = gcc
+CFLAGS = -Wall -Wextra -pedantic -std=c11 -Iinc
+LDFLAGS = -ljson-c
 
-%.o: %.c $(HEAD)
-	$(CC) -c -o $@ $< $(CFLAGS)
+SRC_DIR = src
+INC_DIR = inc
 
-uchat_server: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+SRCS := $(wildcard $(SRC_DIR)/*.c)
+OBJS := $(patsubst $(SRC_DIR)/%.c, $(SRC_DIR)/%.o, $(SRCS))
 
-.PHONY: clean
+TARGET = uchat_server
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+$(SRC_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/%.h
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(OBJ) uchat_server
+	rm -f $(TARGET) $(OBJS)

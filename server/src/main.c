@@ -1,17 +1,5 @@
 #include "../inc/server.h"
 
-void *client_handler(void *arg) {
-    int client_socket = *(int*)arg;
-    char buffer[1024];
-    memset(buffer, 0, sizeof(buffer));
-    read(client_socket, buffer, sizeof(buffer));
-    printf("Received message from client: %s\n", buffer);
-    char response[] = "Hello from server!";
-    write(client_socket, response, strlen(response));
-    close(client_socket);
-    return NULL;
-}
-
 int main() {
     int server_socket, client_socket;
     struct sockaddr_in server_addr, client_addr;
