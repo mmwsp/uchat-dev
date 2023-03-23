@@ -27,6 +27,28 @@ void *client_handler(void *arg) {
             // TODO: if auth false send response with status "REJECTED"
         }
     }
+    if (strcmp(json_object_get_string(method_obj), "message") == 0) {
+            // Parse the chat ID and message text from the JSON
+            struct json_object *chat_id_obj;
+            struct json_object *message_text_obj;
+            json_object_object_get_ex(json_received_obj, "chat_id", &chat_id_obj);
+            json_object_object_get_ex(json_received_obj, "text", &message_text_obj);
+            int chat_id = json_object_get_int(chat_id_obj);
+            char *message_text = (char*)json_object_get_string(message_text_obj);
+
+            // Find the list of clients for the chat
+            struct chat *chat_ptr = find_chat_by_id(chat_id);
+            if (chat_ptr == NULL) {
+                printf("No chat found with ID %d\n", chat_id);
+            }
+                
+            // Send the message to all clients in the chat
+            struct client *client_ptr = chat_ptr->clients;
+            while (client_ptr != NULL) {
+                broadcast_connection(client_ptr, chat_id, message_text);
+                client_ptr = client_ptr->next;
+            }
+        }
     else {          // TODO: implement more conditions with other methods
 
         // Unknown method
