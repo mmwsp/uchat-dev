@@ -1,7 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -pedantic -std=c11 -Iinc
-LDFLAGS = -ljson-c
-
+CFLAGS = -Wall -Wextra -pedantic -std=c11 -Iinc -I/opt/homebrew/Cellar/json-c/0.16/include/ -I/opt/homebrew/include
+LDFLAGS = -L/opt/homebrew/lib -ljson-c -lsqlite3
 SRC_DIR = src
 INC_DIR = inc
 

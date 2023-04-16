@@ -67,6 +67,7 @@ void parse_message(char* buffer) {
     // Handle the message based on the method
     if (strcmp(method, "login") == 0) {
         struct json_object* jstatus;
+        struct json_object* jmessage;
         if (!json_object_object_get_ex(jobj, "status", &jstatus)) {
             fprintf(stderr, "Missing status field in login message\n");
             return;
@@ -79,10 +80,35 @@ void parse_message(char* buffer) {
 
         const char* status = json_object_get_string(jstatus);
         printf("Received login-confirmation status: %s \n", status);
+        const char* message = json_object_get_string(jmessage);
+        if(message) {
+            printf("Received status-message: %s \n", message);
+        }
+
 
         // TODO:  login logic here
         
-    } else {
+    } else if(strcmp(method, "registration") == 0) {
+        struct json_object* jstatus;
+        struct json_object* jmessage;
+        if (!json_object_object_get_ex(jobj, "status", &jstatus)) {
+            fprintf(stderr, "Missing status field in registration message\n");
+            return;
+        }
+
+        if (json_object_get_type(jstatus) != json_type_string) {
+            fprintf(stderr, "Expected 'status' field to be strings\n");
+            return;
+        }
+
+        const char* status = json_object_get_string(jstatus);
+        printf("\n Received registration-confirmation status: %s \n", status);
+        const char* message = json_object_get_string(jmessage);
+        if(message) {
+            printf("Received status-message: %s \n", message);
+        }
+    }
+      else {
         fprintf(stderr, "Unknown method: %s\n", method);
         return;
     }
