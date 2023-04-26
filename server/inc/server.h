@@ -13,29 +13,59 @@
 #include <netinet/in.h>
 #include <sqlite3.h>
 
+#define LIST_SIZE 100
 //structs
 
-struct client {
+struct list_node {
+    int user_id;
     int socket_fd;
-    struct client *next;
+    struct list_node *next;
 };
 
-struct chat {
-    int id;
-    struct client *clients;
-    struct chat *next;
-};
 
-extern struct chat *chat_list;
-
+//list
+int list_function(int user_id);
+void add_to_list(int user_id, int socket_fd);
+void remove_from_list(int user_id);
+int get_socket_fd_from_list(int user_id);
 //
 void sigint_handler(int sig);
+void change_user(int socket_fd, json_object *json_received_obj);
+void get_user_profile(int socket_fd, json_object *json_received_obj);
+void login(int socket_fd, json_object *json_received_obj);
+void registration(int socket_fd, json_object *json_received_obj);
+void init_user(int socket_fd, json_object *json_received_obj);
+struct json_object* retrieve_user_chats(int user_id);
+void delete_user(int socket_fd, json_object *json_received_obj);
 void *client_handler(void *arg);
-void broadcast_connection(struct client *client_ptr, int chat_id, char* message_text);
-struct chat *find_chat_by_id(int chat_id);
-void add_chat(int chat_id);
-void delete_chat(int chat_id);
+//chat
+void search(int socket_fd, json_object *json_received_obj);
+void join_chat(int socket_fd, json_object *json_received_obj);
+void chat_delete(int socket_fd, json_object *json_received_obj);
+void get_chat_users(int socket_fd, json_object *json_received_obj);
+void change_chat(int socket_fd, json_object *json_received_obj);
+void init_chat(int socket_fd, json_object *json_received_obj);
+void private_chat(int socket_fd, json_object *json_received_obj);
+void group_chat(int socket_fd, json_object *json_received_obj);
+//message
+void message_handler(int client_socket, json_object *json_received_obj);
+void get_chat_messages(int socket_fd, json_object *json_received_obj);
+void delete_message(int socket_fd, json_object *json_received_obj);
+void edit_message(int socket_fd, json_object *json_received_obj);
+void common_message(int client_socket, json_object *json_received_obj);
+void file_message(int client_socket, json_object *json_received_obj);
+void broadcast_connection(struct json_object *json_received_obj, int sender_socket_fd, struct json_object *json_message);
+
 // errors
-void login_error(int client_socket);
-void password_error(int client_socket);
+void login_error(int client_socket, int mtd);
+void password_error(int client_socket, int mtd);
 void server_error(int client_socket);
+void unknown_method_error(int client_socket);
+void plain_error(int client_socket);
+//db
+int get_user_id_from_db(char *login);
+int delete_chat_from_db(int c_id);
+int delete_message_from_db(int message_id);
+//time
+char* format_time(long int timestamp);
+long int get_current_time();

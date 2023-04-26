@@ -1,7 +1,6 @@
 #include "../inc/server.h"
 
 volatile sig_atomic_t stop_server = 0;
-struct chat *chat_list = NULL;
 
 void sigint_handler(int sig) {
     stop_server = 1;
