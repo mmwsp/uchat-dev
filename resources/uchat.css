@@ -1,0 +1,338 @@
+
+/*:root {
+    --main-color: #e1e1e1;
+    --second-color: #e8e8e8;
+    --third-color: #dadada;
+    --special-color: #72c9ee;
+    --special-second-color: #51bfee;
+    --label-color: #000000;
+    --border-main-color: #555555; 
+    --border-second-color: #000000; 
+}*/
+    /*@define-color main-color #e1e1e1;
+    @define-color second-color #e8e8e8;
+    @define-color third-color #dadada;
+    @define-color special-color #72c9ee;
+    @define-color special-second-color #51bfee;
+    @define-color label-color #000000;
+    @define-color border-main-color #555555; 
+    @define-color border-second-color #000000; */
+/* ====================================================================================================================== sign in/up */
+.SignPage {
+    background: #e1e1e1;
+}
+.SignMainLabel {
+    color: #000000;
+    font: 32px Sans;
+}
+.SignLabel {
+    background: #e1e1e1;
+    color: black;
+}
+
+.SignEntry {
+    background: #e1e1e1;
+    border-color: #555555;
+    border-width: 2px;
+}
+.SignEntry:focus  {
+    border-color: #000000;
+    box-shadow: none;
+}
+
+.SignChange {
+    background: #e1e1e1;
+    border-color: #000000;
+    border-radius: 5px;
+    box-shadow: none;
+}
+.SignChange:hover {
+    background: #eeeeee;
+    box-shadow: none;
+}
+.SignChange:active {
+    background: #e1e1e1;
+    box-shadow: none;
+}
+
+.SignEnter {
+    background: #72c9ee;
+    border-color: #555555;
+    border-radius: 5px;
+    box-shadow: none;
+}
+.SignEnter:hover {
+    background: #51bfee;
+    box-shadow: none;
+}
+.SignEnter:active {
+    background: #72c9ee;
+    box-shadow: none;
+}
+/* ====================================================================================================================== chats list */
+.ChatsListPage {
+    background: #eeeeee;
+}
+.ChatsListMainBox {
+    background: #eeeeee;
+}
+.ChatsListBox {
+    background: #e1e1e1;
+}
+.ChatsListBox2 {
+    background: #e1e1e1;
+}
+
+/* chat list styles */
+.ChatsListItem {
+    background: #e1e1e1;
+    border-radius: 5px;
+    border: none;
+    padding: 0px;
+}
+.ChatsListItem:hover {
+    background: #d1d1d1;
+}
+.ChatsListItem:active {
+    background: transparent;
+}
+.ChatsListItemImage {
+    background: transparent;
+    border-radius: 5px;
+    border: 2px;
+    border-color: #000000;
+}
+.ChatsListItemLabel {
+    color: #000000;
+    background: transparent;
+    border-radius: 0px;
+}
+.ChatsListItemCountLabel {
+    background: #aaaaaa;
+    border-radius: 5px;
+    padding: 5px;
+}
+/* buttons styles */
+
+/* search */
+.SearchEntry {
+    color: #000000;
+    background: transparent;
+    padding: 2px; 
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+}
+.SearchEntry:hover {
+    padding: 2px; 
+    box-shadow: none;
+}
+.SearchEntry:active {
+    color: black;
+    padding: 2px; 
+    box-shadow: none;
+}
+/* ============================================================================================================================ chat */
+.ChatPage {
+    /* background: rgb(255, 255, 255); */
+    background: linear-gradient( rgb(155, 200, 250), rgb(250, 240, 155) );
+}
+.ChatBox {
+    background: #e1e1e1;
+}
+.ChatNameLabel {
+    color: #000000;
+    font: 14px Sans;
+}
+.ChatStatusLabel {
+    color: #333333;
+    font: 12px Sans;
+}
+/* chat message styles */
+.ChatRevealedMessageLabel {
+    background: #e1e1e1;
+    color: #000000;
+}
+.ChatMessageName {
+    color: #000000;
+    border: none;
+    padding: 0px;
+}
+.ChatMessageDate {
+    color: #333333;
+    border: none;
+    padding: 0px;
+}
+.ChatMessageText {
+    background: transparent;
+    color: #000000;
+    border: none;
+    padding: 0px;
+}
+.ChatMessageButton {
+    background: #e1e1e1;
+    border: none;
+    border-radius: 5px;
+    padding: 0px;
+}
+.ChatProfileButton {
+    background: #e1e1e1;
+    border: none;
+    border-radius: 1000px;
+    padding: 0px;
+}
+
+.ChatMessageEntry {
+    color: #000000;
+    background: transparent;
+    padding: 2px; 
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    /* border-color: dimgray; */
+}
+.ChatMessageEntry:hover {
+    padding: 2px; 
+    box-shadow: none;
+    /* border: 2px; */
+    /* border-color: black; */
+    /* background: rgba(0,200,200,0.5); */
+}
+.ChatMessageEntry:active {
+    color: black;
+    padding: 2px; 
+    box-shadow: none;
+    /* border-color: dimgray; */
+    /* background: rgba(0,200,0,0.5); */
+}
+/* ======================================================================================================================== overlays */
+.OverlayStack {
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    box-shadow: none;
+}
+.OverlayMainBox {
+    background: #e1e1e1;
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+}
+.OverlayName {
+    color: #000000;
+    background: transparent;
+    border: none;
+}
+.OverlayImageLabel {
+    background: transparent;
+    border: 1px;
+    border-radius: 5px;
+    border-color: greenyellow;
+}
+.OverlayNameLabel {
+    color: #000000;
+    background: transparent;
+    border: none;
+}
+.OverlayStatusLabel {
+    color: #000000;
+    background: transparent;
+    border: none;
+}
+.OverlayBioLabel {
+    color: #000000;
+    background: #d1d1d1;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+}
+
+.OverlayButton {
+    background: #e1e1e1;
+    border-color: #000000;
+    border-radius: 5px;
+    box-shadow: none;
+}
+.OverlayButton:hover {
+    background: #eeeeee;
+    box-shadow: none;
+}
+.OverlayButton:active {
+    background: #e1e1e1;
+    box-shadow: none;
+}
+.OverlayRedButton {
+    background: #e97777;
+    border-color: #555555;
+    border-radius: 5px;
+    box-shadow: none;
+}
+.OverlayRedButton:hover {
+    background: #ee5151;
+    box-shadow: none;
+}
+.OverlayRedButton:active {
+    background: #e97777;
+    box-shadow: none;
+}
+
+.OverlayEntryLabel {
+    background: #e1e1e1;
+    color: black;
+}
+.OverlayEntry {
+    background: #e1e1e1;
+    border-color: #555555;
+    border-width: 2px;
+}
+.OverlayEntry:focus  {
+    border-color: #000000;
+    box-shadow: none;
+}
+/* notification */
+.OverlayNotificationBox {
+    background: #e97777;
+    color: black;
+}
+.OverlayNotification {
+    background: #e1e1e1;
+    border-color: #555555;
+    border-width: 2px;
+}
+/* ============================================================================================================================= all */
+.CLCButton {
+    background: transparent;
+    padding: 2px;
+    border-radius: 0px;
+    border-color: transparent;
+    box-shadow: none;
+}
+.CLCButton:hover {
+    border-radius: 5px;
+    background: radial-gradient( rgba(0, 0, 0, 0.1), transparent );
+    box-shadow: none;
+}
+.CLCButton:active {
+    background: transparent;
+    box-shadow: none;
+}
+
+
+
+.ClearButton {
+    background: transparent;
+    padding: 0px;
+    border-radius: 0px;
+    border-color: transparent;
+    box-shadow: none;
+}
+.ClearButton:hover {
+    background: transparent;
+    box-shadow: none;
+}
+.ClearButton:active {
+    background: transparent;
+    box-shadow: none;
+}
+
+
+
