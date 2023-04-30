@@ -34,6 +34,8 @@ void login(int client_socket);
 void init_user(int client_socket);
 void registration(int client_socket);
 //
+void leave_chat(int client_socket);
+void add_group(int client_socket);
 void search(int client_socket);
 void delete_chat(int client_socket);
 void init_private_chat(int client_socket);

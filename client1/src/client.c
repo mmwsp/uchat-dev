@@ -16,7 +16,7 @@ int main() {
     
     // Set server address
     server_addr.sin_family = AF_INET;
-    server_addr.sin_addr.s_addr = inet_addr("192.168.43.98");
+    server_addr.sin_addr.s_addr = inet_addr("192.168.43.97");
     server_addr.sin_port = htons(8083);
     
     // Connect to server
@@ -25,9 +25,9 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
+/*
     //registration(client_socket);
-
-   /* init_user(client_socket);
+ //   init_user(client_socket);
     struct json_object* json_received_obj1;
     if (receive_json_object(client_socket, &json_received_obj1) == -1) {
         fprintf(stderr, "Failed to receive JSON message from server(main)\n");
@@ -37,15 +37,18 @@ int main() {
     printf("\n RECEIVED: %s .", buffer);
     parse_message(buffer);
     json_object_put(json_received_obj1); */
+    //sleep(2);
+    
+   // search(client_socket);
+    login(client_socket);
 
-    
-    search(client_socket);
-    
-  //  send_common_message(client_socket);
-   // sleep(15);
+   //sleep(5);
+    //send_common_message(client_socket);
+  //  add_group(client_socket);
    // send_file_message(client_socket);
-    //login(client_socket);
+   // login(client_socket);
    // init_private_chat(client_socket);
+    leave_chat(client_socket);
     //listening for incoming messages
     struct json_object* json_received_obj;
     while (1) {
